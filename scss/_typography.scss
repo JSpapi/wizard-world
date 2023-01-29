@@ -1,0 +1,13 @@
+@use "./varibales" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.font-regular {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.font-bold {
+  font-weight: 700;
+}
