@@ -1,11 +1,45 @@
+const API_URL = `https://hp-api.onrender.com/api/characters`;
+// !GET ADATA FUNCTION
+const getData = async () => {
+  try {
+    const { data } = await axios(API_URL);
+    createInfoCards(data);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+// !TRIGGER CARDS FUNCTION
 export const cardsFn = () => {
+  getData();
+};
+// !CREATE CARDS FUNCTION
+function createInfoCards(data) {
+  const infoCardsParent = document.querySelector(".info__cards");
 
-	const API_URL = `https://hp-api.onrender.com/api/characters`;
-
-	const getData = async ()=> {
-		
-	}
-
+  infoCardsParent.innerHTML = data
+    .map(
+      (card) =>
+        `
+			<article class="info__card">
+				<div class="info__card-header">
+					<img src="${card.image ? card.image : (card.gender === 'male' ? `./images/male-unkn.jpg` : `./images/female-unkn.png`)} " alt="" />
+				</div>
+				<div class="info__card-body">
+					<p class="info__card-text">Name: ${card.name}</p>
+					<p class="info__card-text">
+					${card.hogwartsStudent ? `Hogwarts student` : (card.hogwartsStaff ? `Hogwarts staff` : `Not Hogwarts staff`) }
+					</p>
+					<p class="house">
+					House:
+					<span class="flag">${card.house ? card.house : 'haven knows'}</span>
+					</p>
+				</div>
+				<span class="moreInfo">More info</span>
+			</article>
+		`
+    )
+    .join("");
 
   const housesFlag = document.querySelectorAll(".flag");
 
@@ -45,8 +79,12 @@ export const cardsFn = () => {
         break;
 
       default:
+        infoCard.style.borderImageSource = `url("../images/hgw.webp")`;
+        infoCard.style.borderImageSlice = `120`;
+        infoCard.style.borderImageRepeat = `round`;
+        infoCard.style.backgroundColor = `#3c3c3b`;
         console.log("staff");
         break;
     }
   });
-};
+}

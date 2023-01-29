@@ -8,3 +8,7 @@ $nav: #10141b;
 // !fonts
 $primaryFont: 'Poppins', sans-serif;
 $secondaryFont: 'Playfair Display', serif;
+
+@mixin textShadow {
+	text-shadow: #FC0 1px 0 10px;
+}
