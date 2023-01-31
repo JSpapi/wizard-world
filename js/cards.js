@@ -1,3 +1,4 @@
+import { createInfoModal } from "./modal.js";
 const API_URL = `https://hp-api.onrender.com/api/characters`;
 // !GET ADATA FUNCTION
 const getData = async () => {
@@ -5,7 +6,8 @@ const getData = async () => {
     const { data } = await axios(API_URL);
     createInfoCards(data);
   } catch (err) {
-    console.log(err.message);
+    alert(err.message);
+    console.log(err);
   }
 };
 
@@ -19,55 +21,72 @@ function createInfoCards(data) {
 
   infoCardsParent.innerHTML = data
     .map(
-      (card) =>
+      ({ id, image, gender, name, hogwartsStudent, hogwartsStaff, house }) =>
         `
 			<article class="info__card">
 				<div class="info__card-header">
-					<img src="${card.image ? card.image : (card.gender === 'male' ? `./images/male-unkn.jpg` : `./images/female-unkn.png`)} " alt="" />
+					<img src="${
+            image
+              ? image
+              : gender === "male"
+              ? `./images/male-unkn.jpg`
+              : `./images/female-unkn.png`
+          } " alt="" />
 				</div>
 				<div class="info__card-body">
-					<p class="info__card-text">Name: ${card.name}</p>
+					<p class="info__card-text">Name: ${name}</p>
 					<p class="info__card-text">
-					${card.hogwartsStudent ? `Hogwarts student` : (card.hogwartsStaff ? `Hogwarts staff` : `Not Hogwarts staff`) }
+					${
+            hogwartsStudent
+              ? `Hogwarts student`
+              : hogwartsStaff
+              ? `Hogwarts staff`
+              : `Not Hogwarts staff`
+          }
 					</p>
 					<p class="house">
 					House:
-					<span class="flag">${card.house ? card.house : 'haven knows'}</span>
+					<span class="crest">${house ? house : "haven knows"}</span>
 					</p>
 				</div>
-				<span class="moreInfo">More info</span>
+				<span class="moreInfo" data-modal="${id}">More info</span>
 			</article>
 		`
     )
     .join("");
 
-  const housesFlag = document.querySelectorAll(".flag");
+  // ! CARDS BORDER
+  const houseCrests = document.querySelectorAll(".crest");
+  createBordersForCards(houseCrests);
 
-  housesFlag.forEach((flag) => {
-    const infoCard = flag.closest(".info__card");
+  const moreInfoBtns = document.querySelectorAll(".moreInfo");
 
-    switch (flag.innerText) {
+  createInfoModal(data, moreInfoBtns);
+}
+// ! CREATE CARDS BORDER IMAGE
+const createBordersForCards = (houseCrests) => {
+  houseCrests.forEach((crest) => {
+    const infoCard = crest.closest(".info__card");
+
+    switch (crest.innerText) {
       case "Gryffindor":
         infoCard.style.borderImageSource = `url("../images/grif.jpg")`;
         infoCard.style.borderImageSlice = `250`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#4e251d`;
 
-        console.log(infoCard);
         break;
       case "Slytherin":
         infoCard.style.borderImageSource = `url('../images/sl.webp')`;
         infoCard.style.borderImageSlice = `180`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#044135`;
-        console.log("Slytherin");
         break;
       case "Ravenclaw":
         infoCard.style.borderImageSource = `url("../images/rw.jpg")`;
         infoCard.style.borderImageSlice = `290`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#1f242c`;
-        console.log("Ravenclaw");
         break;
 
       case "Hufflepuff":
@@ -75,7 +94,6 @@ function createInfoCards(data) {
         infoCard.style.borderImageSlice = `100`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#a7854b`;
-        console.log("Hufflepuff");
         break;
 
       default:
@@ -83,8 +101,7 @@ function createInfoCards(data) {
         infoCard.style.borderImageSlice = `120`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#3c3c3b`;
-        console.log("staff");
         break;
     }
   });
-}
+};
