@@ -1,5 +1,6 @@
 // ! MODAL SCRIPTS
 import { createInfoModal } from "./modal.js";
+import { houseFilter } from "./houseFilter.js";
 
 const API_URL = `https://hp-api.onrender.com/api/characters`;
 // !GET ADATA FUNCTION
@@ -7,7 +8,14 @@ const getData = async () => {
   try {
     const { data } = await axios(API_URL);
     // !CREATE CARDS FUNCTION
-    createInfoCards(data);
+    const infoCardsParent = document.querySelector(".info__cards");
+    createInfoCards(data, infoCardsParent);
+    setTimeout(()=> {
+      infoCardsParent.classList.add('show')
+    },1500)
+
+    // !CREATE CARDS DEPENDING ON HOUSE
+    houseFilter(data, infoCardsParent);
   } catch (err) {
     alert(err.message);
     console.log(err);
@@ -19,8 +27,7 @@ export const cardsFn = () => {
   getData();
 };
 // !CREATE CARDS FUNCTION
-function createInfoCards(data) {
-  const infoCardsParent = document.querySelector(".info__cards");
+export function createInfoCards(data, infoCardsParent) {main
 
   infoCardsParent.innerHTML = data
     .map(

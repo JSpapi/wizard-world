@@ -6,7 +6,7 @@ export const createInfoModal = (data, moreInfoBtns) => {
   moreInfoBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.modal;
-      const modal = data.filter((char) => char.id === id);
+      const modal = data.filter((card) => card.id === id);
 
       modalParent.innerHTML = modal
         .map(
@@ -119,6 +119,7 @@ export const createInfoModal = (data, moreInfoBtns) => {
       setTimeout(() => {
         // !CREATE CRESTS DEPENDING ON HOUSE
         createCrestForModal(modalCrests, modalCrestImg);
+        // !PRELOADER FOR IMAGES
         imgLoader(modalImg);
       }, 2000);
 
@@ -126,6 +127,7 @@ export const createInfoModal = (data, moreInfoBtns) => {
       overlay.addEventListener("click", modalHide);
     });
   });
+  // !HIDE MODAL FN
   function modalHide() {
     overlay.classList.remove("active");
     modalParent.classList.remove("show");

@@ -19,12 +19,10 @@ export const headerFn = () => {
     }
   });
 
-  document
-    .querySelector(".header__fixed")
-    .addEventListener("mouseenter", addNavbarBg);
-  document
-    .querySelector(".header__fixed")
-    .addEventListener("mouseleave", removeNavbarBg);
+  const navbarBg = document.querySelector(".header__fixed");
+
+  navbarBg.addEventListener("mouseenter", addNavbarBg);
+  navbarBg.addEventListener("mouseleave", removeNavbarBg);
 };
 
 export const animationTitle = () => {

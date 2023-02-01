@@ -15,6 +15,14 @@
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
   gap: 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .5s ease-in-out;
+
+  &.show{
+    opacity: 1;
+    pointer-events: all;
+  }
 
   @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
