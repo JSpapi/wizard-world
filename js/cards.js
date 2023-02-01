@@ -1,9 +1,12 @@
+// ! MODAL SCRIPTS
 import { createInfoModal } from "./modal.js";
+
 const API_URL = `https://hp-api.onrender.com/api/characters`;
 // !GET ADATA FUNCTION
 const getData = async () => {
   try {
     const { data } = await axios(API_URL);
+    // !CREATE CARDS FUNCTION
     createInfoCards(data);
   } catch (err) {
     alert(err.message);
@@ -31,7 +34,7 @@ function createInfoCards(data) {
               : gender === "male"
               ? `./images/male-unkn.jpg`
               : `./images/female-unkn.png`
-          } " alt="" />
+          }" alt="${house}"/>
 				</div>
 				<div class="info__card-body">
 					<p class="info__card-text">Name: ${name}</p>
@@ -60,7 +63,7 @@ function createInfoCards(data) {
   createBordersForCards(houseCrests);
 
   const moreInfoBtns = document.querySelectorAll(".moreInfo");
-
+  // ! CREATE  INFO MODAL
   createInfoModal(data, moreInfoBtns);
 }
 // ! CREATE CARDS BORDER IMAGE
@@ -70,34 +73,34 @@ const createBordersForCards = (houseCrests) => {
 
     switch (crest.innerText) {
       case "Gryffindor":
-        infoCard.style.borderImageSource = `url("../images/grif.jpg")`;
+        infoCard.style.borderImageSource = `url("../images/Gryffindor.jpg")`;
         infoCard.style.borderImageSlice = `250`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#4e251d`;
 
         break;
       case "Slytherin":
-        infoCard.style.borderImageSource = `url('../images/sl.webp')`;
+        infoCard.style.borderImageSource = `url('../images/Slytherin.webp')`;
         infoCard.style.borderImageSlice = `180`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#044135`;
         break;
       case "Ravenclaw":
-        infoCard.style.borderImageSource = `url("../images/rw.jpg")`;
+        infoCard.style.borderImageSource = `url("../images/Ravenclaw.jpg")`;
         infoCard.style.borderImageSlice = `290`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#1f242c`;
         break;
 
       case "Hufflepuff":
-        infoCard.style.borderImageSource = `url("../images/hf.jpg")`;
+        infoCard.style.borderImageSource = `url("../images/Hufflepuff.jpg")`;
         infoCard.style.borderImageSlice = `100`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#a7854b`;
         break;
 
       default:
-        infoCard.style.borderImageSource = `url("../images/hgw.webp")`;
+        infoCard.style.borderImageSource = `url("../images/hg.webp")`;
         infoCard.style.borderImageSlice = `120`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#3c3c3b`;
