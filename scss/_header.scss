@@ -71,24 +71,6 @@
   }
 }
 
-// .search {
-//   display: inline-flex;
-//   align-items: center;
-//   position: absolute;
-//   right: 0;
-//   margin-right: 100px;
-
-//   padding: 6px 10px 7px;
-//   background: $btn;
-//   color: $white;
-//   border-radius: 5px;
-
-//   i {
-//     margin-left: 10px;
-//     font-size: 18px;
-//   }
-// }
-
 .house__nav {
   max-width: 100%;
   width: 100%;
@@ -160,13 +142,9 @@
       rgba(16, 20, 27, 0.8) 50%,
       rgba(16, 20, 27, 0)
     );
-    justify-content: space-between;
+    justify-content: center;
   }
 
-  .search {
-    position: static;
-    margin-right: 0;
-  }
 }
 
 @media (max-width: 490px) {

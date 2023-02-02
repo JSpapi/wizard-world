@@ -10,7 +10,7 @@ export const search = (data, infoCardsParent) => {
         card.house.toLowerCase().includes(inputValue)
     );
     if (!newCards.length) {
-      infoCardsParent.innerHTML = `<h2>no such dick</h2>`;
+      infoCardsParent.innerHTML = `<h2>no such Wizard or House</h2>`;
       infoCardsParent.style.display = "block";
     } else {
       createInfoCards(newCards, infoCardsParent);
