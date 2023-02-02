@@ -1,6 +1,7 @@
 // ! MODAL SCRIPTS
 import { createInfoModal } from "./modal.js";
 import { houseFilter } from "./houseFilter.js";
+import { search } from "./search.js";
 
 const API_URL = `https://hp-api.onrender.com/api/characters`;
 // !GET ADATA FUNCTION
@@ -13,6 +14,7 @@ const getData = async () => {
     setTimeout(()=> {
       infoCardsParent.classList.add('show')
     },1500)
+    search(data, infoCardsParent);
 
     // !CREATE CARDS DEPENDING ON HOUSE
     houseFilter(data, infoCardsParent);

@@ -7,10 +7,8 @@ export const houseFilter = (data, infoCardsParent) => {
   houseFilterBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       infoCardsParent.classList.remove("show");
-      // todo DATA has GAINed WITH DATASET
-      // const houseName2 = e.target.dataset.house;
+      const houseName = e.target.dataset.house;
 
-      const houseName = e.target.innerText;
       if (houseName === "All") {
         setTimeout(() => {
           createInfoCards(data, infoCardsParent);
