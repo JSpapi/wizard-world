@@ -31,7 +31,7 @@ export const createInfoModal = (data, moreInfoBtns) => {
             `
         <div class="modal__content">
           <div class="modal__content-header">
-            <img src="../images/ghost3.gif" data-src="${
+            <img src="./images/ghost3.gif" data-src="${
               image
                 ? image
                 : gender === "male"
@@ -100,7 +100,7 @@ export const createInfoModal = (data, moreInfoBtns) => {
               house ? house : `no info`
             }</span></p>
             <p class="modal__content-crest" >
-              Crest: <img src="../images/ghost3.gif" alt="${house}" />
+              Crest: <img src="./images/ghost3.gif" alt="${house}" />
             </p>
           </div>
         </div>

@@ -11,9 +11,9 @@ const getData = async () => {
     // !CREATE CARDS FUNCTION
     const infoCardsParent = document.querySelector(".info__cards");
     createInfoCards(data, infoCardsParent);
-    setTimeout(()=> {
-      infoCardsParent.classList.add('show')
-    },1500)
+    setTimeout(() => {
+      infoCardsParent.classList.add("show");
+    }, 1500);
     search(data, infoCardsParent);
 
     // !CREATE CARDS DEPENDING ON HOUSE
@@ -29,7 +29,8 @@ export const cardsFn = () => {
   getData();
 };
 // !CREATE CARDS FUNCTION
-export function createInfoCards(data, infoCardsParent) {main
+export function createInfoCards(data, infoCardsParent) {
+  main;
 
   infoCardsParent.innerHTML = data
     .map(
@@ -82,34 +83,34 @@ const createBordersForCards = (houseCrests) => {
 
     switch (crest.innerText) {
       case "Gryffindor":
-        infoCard.style.borderImageSource = `url("../images/Gryffindor.jpg")`;
+        infoCard.style.borderImageSource = `url("./images/Gryffindor.jpg")`;
         infoCard.style.borderImageSlice = `250`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#4e251d`;
 
         break;
       case "Slytherin":
-        infoCard.style.borderImageSource = `url('../images/Slytherin.webp')`;
+        infoCard.style.borderImageSource = `url('./images/Slytherin.webp')`;
         infoCard.style.borderImageSlice = `180`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#044135`;
         break;
       case "Ravenclaw":
-        infoCard.style.borderImageSource = `url("../images/Ravenclaw.jpg")`;
+        infoCard.style.borderImageSource = `url("./images/Ravenclaw.jpg")`;
         infoCard.style.borderImageSlice = `290`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#1f242c`;
         break;
 
       case "Hufflepuff":
-        infoCard.style.borderImageSource = `url("../images/Hufflepuff.jpg")`;
+        infoCard.style.borderImageSource = `url("./images/Hufflepuff.jpg")`;
         infoCard.style.borderImageSlice = `100`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#a7854b`;
         break;
 
       default:
-        infoCard.style.borderImageSource = `url("../images/hg.webp")`;
+        infoCard.style.borderImageSource = `url("./images/hg.webp")`;
         infoCard.style.borderImageSlice = `120`;
         infoCard.style.borderImageRepeat = `round`;
         infoCard.style.backgroundColor = `#3c3c3b`;
